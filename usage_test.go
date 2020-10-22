@@ -80,7 +80,10 @@ func TestUsageDefault(t *testing.T) {
 	// copy the output in a separate goroutine so printing can't block indefinitely
 	go func() {
 		var buf bytes.Buffer
-		io.Copy(&buf, r)
+		_, err := io.Copy(&buf, r)
+		if err != nil {
+			t.Log("error copying buffer: " + err.Error())
+		}
 		outC <- buf.String()
 	}()
 	w.Close()
@@ -137,7 +140,7 @@ func TestUsageUnknownKeyFormat(t *testing.T) {
 	if err == nil {
 		t.Errorf("expected 'unknown key' error, but got no error")
 	}
-	if strings.Index(err.Error(), unknownError) == -1 {
+	if !strings.Contains(err.Error(), unknownError) {
 		t.Errorf("expected '%s', but got '%s'", unknownError, err.Error())
 	}
 }

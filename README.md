@@ -1,14 +1,14 @@
 # envconfig
 
-[![Build Status](https://travis-ci.org/kelseyhightower/envconfig.svg)](https://travis-ci.org/kelseyhightower/envconfig)
+[![Build Status](https://travis-ci.org/bsdlp/envconfig.svg)](https://travis-ci.org/bsdlp/envconfig)
 
 ```Go
-import "github.com/kelseyhightower/envconfig"
+import "github.com/bsdlp/envconfig"
 ```
 
 ## Documentation
 
-See [godoc](http://godoc.org/github.com/kelseyhightower/envconfig)
+See [godoc](http://godoc.org/github.com/bsdlp/envconfig)
 
 ## Usage
 
@@ -34,7 +34,7 @@ import (
     "log"
     "time"
 
-    "github.com/kelseyhightower/envconfig"
+    "github.com/bsdlp/envconfig"
 )
 
 type Specification struct {
@@ -142,6 +142,7 @@ variable that directly matches the envconfig tag in your struct definition:
 export SERVICE_HOST=127.0.0.1
 export MYAPP_DEBUG=true
 ```
+
 ```Go
 type Specification struct {
     ServiceHost string `envconfig:"SERVICE_HOST"`
@@ -156,15 +157,15 @@ environment variable is set.
 
 envconfig supports these struct field types:
 
-  * string
-  * int8, int16, int32, int64
-  * bool
-  * float32, float64
-  * slices of any supported type
-  * maps (keys and values of any supported type)
-  * [encoding.TextUnmarshaler](https://golang.org/pkg/encoding/#TextUnmarshaler)
-  * [encoding.BinaryUnmarshaler](https://golang.org/pkg/encoding/#BinaryUnmarshaler)
-  * [time.Duration](https://golang.org/pkg/time/#Duration)
+* string
+* int8, int16, int32, int64
+* bool
+* float32, float64
+* slices of any supported type
+* maps (keys and values of any supported type)
+* [encoding.TextUnmarshaler](https://golang.org/pkg/encoding/#TextUnmarshaler)
+* [encoding.BinaryUnmarshaler](https://golang.org/pkg/encoding/#BinaryUnmarshaler)
+* [time.Duration](https://golang.org/pkg/time/#Duration)
 
 Embedded structs using these fields are also supported.
 

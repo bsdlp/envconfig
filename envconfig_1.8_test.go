@@ -18,15 +18,15 @@ func TestParseURL(t *testing.T) {
 	var s SpecWithURL
 
 	os.Clearenv()
-	os.Setenv("ENV_CONFIG_URLVALUE", "https://github.com/kelseyhightower/envconfig")
-	os.Setenv("ENV_CONFIG_URLPOINTER", "https://github.com/kelseyhightower/envconfig")
+	os.Setenv("ENV_CONFIG_URLVALUE", "https://github.com/bsdlp/envconfig")
+	os.Setenv("ENV_CONFIG_URLPOINTER", "https://github.com/bsdlp/envconfig")
 
 	err := Process("env_config", &s)
 	if err != nil {
 		t.Fatal("unexpected error:", err)
 	}
 
-	u, err := url.Parse("https://github.com/kelseyhightower/envconfig")
+	u, err := url.Parse("https://github.com/bsdlp/envconfig")
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}

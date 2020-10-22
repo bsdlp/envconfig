@@ -114,8 +114,8 @@ func TestProcess(t *testing.T) {
 	os.Setenv("ENV_CONFIG_DATETIME", "2016-08-16T18:57:05Z")
 	os.Setenv("ENV_CONFIG_MULTI_WORD_VAR_WITH_AUTO_SPLIT", "24")
 	os.Setenv("ENV_CONFIG_MULTI_WORD_ACR_WITH_AUTO_SPLIT", "25")
-	os.Setenv("ENV_CONFIG_URLVALUE", "https://github.com/kelseyhightower/envconfig")
-	os.Setenv("ENV_CONFIG_URLPOINTER", "https://github.com/kelseyhightower/envconfig")
+	os.Setenv("ENV_CONFIG_URLVALUE", "https://github.com/bsdlp/envconfig")
+	os.Setenv("ENV_CONFIG_URLPOINTER", "https://github.com/bsdlp/envconfig")
 	err := Process("env_config", &s)
 	if err != nil {
 		t.Error(err.Error())
@@ -216,7 +216,7 @@ func TestProcess(t *testing.T) {
 		t.Errorf("expected %d, got %d", 25, s.MultiWordACRWithAutoSplit)
 	}
 
-	u, err := url.Parse("https://github.com/kelseyhightower/envconfig")
+	u, err := url.Parse("https://github.com/bsdlp/envconfig")
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
@@ -889,6 +889,9 @@ func BenchmarkGatherInfo(b *testing.B) {
 	os.Setenv("ENV_CONFIG_MULTI_WORD_VAR_WITH_AUTO_SPLIT", "24")
 	for i := 0; i < b.N; i++ {
 		var s Specification
-		gatherInfo("env_config", &s)
+		_, err := gatherInfo("env_config", &s)
+		if err != nil {
+			b.Error(err)
+		}
 	}
 }
