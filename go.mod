@@ -1,3 +1,3 @@
-module github.com/kelseyhightower/envconfig
+module github.com/bsdlp/envconfig
 
 go 1.15
